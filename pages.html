@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <link href="css/dashBoard.css" rel="stylesheet">
+
+</head>
+<body>
+<header>
+    <div id="header-sec">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo-container">
+                <div class="close-btn" id="closeSidebar">&times;</div>
+                <img src="assets/img/logo2.png" alt="Dash logo" height="150" class="logo-img mb-6">
+            </div>
+            <a href="#dashboard-sec" id="dashboard"><i class="fas fa-tachometer-alt icon"></i>Dashboard</a>
+            <a href="#field-sec" id="field"><i class="fas fa-seedling icon"></i>Field Management</a>
+            <a href="#crops-sec" id="crops"><i class="fas fa-leaf icon"></i>Crops Management</a>
+            <a href="#staff-sec" id="staff"><i class="fas fa-users icon"></i>Staff Management</a>
+            <a href="#monitoring-log-sec" id="log"><i class="fas fa-clipboard-list icon"></i>Monitoring Log Service</a>
+            <a href="#vehicle-sec" id="vehicle"><i class="fas fa-truck icon"></i>Vehicle Management</a>
+            <a href="#equipment-sec" id="equipment"><i class="fas fa-tools icon"></i>Equipment Service</a>
+            <!-- Logout Button -->
+            <button type="button" id="btn-logout" class="btn btn-success logout"><i class="fas fa-sign-out-alt icon"></i>Logout</button>
+        </div>
+    </div>
+
+
+    <div class="content">
+        <div class="top-bar d-flex justify-content-between align-items-center">
+            <button class="btn btn-light d-md-none" id="toggleSidebar">☰</button>
+            <h4>Welcome to Green Shadow Pvt(Ltd).</h4>
+        </div>
+    <!--  Dashboard section-->
+    <section id="dashboardSection">
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <div class="card p-3 shadow-sm">
+                    <h5>Total Crops</h5>
+                    <p class="display-6">150</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card p-3 shadow-sm">
+                    <h5>Total Vehicles</h5>
+                    <p class="display-6">300</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card p-3 shadow-sm">
+                    <h5>Date</h5>
+                    <p class="display-6" id="date"></p>
+                    <h5>Time</h5>
+                    <p class="display-6" id="time"></p>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="card p-4 shadow-sm">
+                    <h5>Recent Activity</h5>
+                    <ul class="list-unstyled mt-3">
+                        <li>Added new crop - Corn</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card p-4 shadow-sm">
+                    <h5>Quick Links</h5>
+                    <div class="d-grid gap-2 mt-3">
+                        <a href="#" class="btn btn-outline-success">Add New Crop</a>
+                        <a href="#" class="btn btn-outline-success">Add New Log</a>
+                        <a href="#" class="btn btn-outline-success">Add new Equipment</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    </div>
+</header>
+<script src="assets/lib/jquery-3.7.1.min.js"></script>
+<script type="module" src="controller/DashBoardController.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
