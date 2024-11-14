@@ -23,8 +23,6 @@
 .nav-tabs .nav-link {
     height: 100%;
     display: flex;
-    /*align-items: center;*/
-    /*justify-content: center;*/
     color: white;
     border: none;
     border-radius: 0;
@@ -74,7 +72,6 @@ body {
     height: 100%;
 
 }
-
 .slideshow-image {
     position: absolute;
     width: 130vh;
@@ -83,7 +80,6 @@ body {
     opacity:0;
     transition: opacity 1s ease-in-out;
 }
-
 .slideshow-image.active {
     opacity:1;
 }

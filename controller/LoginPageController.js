@@ -32,7 +32,6 @@ $(document).ready(function () {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
     }
-
     // Logic for switching between Sign-Up and Sign-In forms
     const signInForm = document.getElementById("signInForm");
     const signUpForm = document.getElementById("signUpForm");
