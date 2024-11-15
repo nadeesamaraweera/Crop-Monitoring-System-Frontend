@@ -22,7 +22,7 @@
             </div>
             <a href="#dashboard-sec" id="dashboard"><i class="fas fa-tachometer-alt icon"></i>Dashboard</a>
             <a href="#field-sec" id="field"><i class="fas fa-seedling icon"></i>Field Management</a>
-            <a href="#crops-sec" id="crops"><i class="fas fa-leaf icon"></i>Crops Management</a>
+            <a href="#crop-sec" id="crop"><i class="fas fa-leaf icon"></i>Crops Management</a>
             <a href="#staff-sec" id="staff"><i class="fas fa-users icon"></i>Staff Management</a>
             <a href="#monitoring-log-sec" id="log"><i class="fas fa-clipboard-list icon"></i>Monitoring Log Service</a>
             <a href="#vehicle-sec" id="vehicle"><i class="fas fa-truck icon"></i>Vehicle Management</a>
@@ -298,6 +298,201 @@
                 </div>
             </div>
         </section>
+
+<!--        Crop Section-->
+        <section id="crop-sec" style="display: none">
+            <div class="container mt-4">
+                <div class="col-xl-12 col-sm-12 col-12 mb-4">
+                    <div class="title-card">
+                        <div class="title-heading">
+                            <label class="title" style="font-size: 25px;font-weight: 700" > Crops Summary </label>
+                            <button type="button" class="new-button flex-grow-1" data-bs-toggle="modal" data-bs-target="#newCropModal"><i class="fas fa-plus plus-icon"></i>Add New</button>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- Search bar -->
+                    <div class="mb-3" style="margin-left: 145vh;"> <!-- Adjust the margin as needed -->
+                        <div class="input-group mb-3" style="width: 350px;">
+                            <input type="text" id="searchCrop" class="form-control" placeholder="Search crops" aria-label="Search">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="table-responsive" style="overflow-x: auto;">
+                        <table class="table custom-table no-footer" id="tbl-crop">
+                            <thead>
+                            <tr>
+                                <th>Crop Code</th>
+                                <th>Crop Common Name</th>
+                                <th>Scientific name</th>
+                                <th>Category</th>
+                                <th>Season</th>
+                                <th>Crop Image</th>
+                                <th>Allocated Field</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <!-- Populate with JavaScript or server-side code -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- crop Card -->
+            <div id="cropCard" class="row">
+                <!-- add card dynamically -->
+            </div>
+            <!-- New Field Modal -->
+            <div class="modal fade" id="newCropModal" tabindex="-1" aria-labelledby="newCropModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content" style="background-color: #2b2b2b; color: white;">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="newCropModalLabel">Add New Field Details</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="filter: invert(1);"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="cropForm">
+
+                                <div class="row mb-3">
+                                    <!-- Crop Name -->
+                                    <div class="col-md-6">
+                                        <label for="cropName" class="form-label">Crop Common Name</label>
+                                        <input type="text" class="form-control" id="cropName">
+                                    </div>
+                                    <!-- Crop Scientific Name -->
+                                    <div class="col-md-6">
+                                        <label for="cropScientificName" class="form-label">Scientific Name</label>
+                                        <label for="cropScientificName"></label>
+                                        <input type="text" class="form-control" id="cropScientificName">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <!-- Category -->
+                                    <div class="col-md-6">
+                                        <label for="cropCategory" class="form-label">Category</label>
+                                        <label for="cropCategory"></label>
+                                        <select class="form-control" id="cropCategory">
+                                            <option value="">Select Category</option>
+                                            <option value="Vegetable">Vegetable</option>
+                                            <option value="Fruit">Fruit</option>
+                                            <option value="Grain">Grain</option>
+                                            <option value="Herb">Herb</option>
+                                            <option value="Legume">Legume</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </div>
+                                    <!-- Crop Season -->
+                                    <div class="col-md-6">
+                                        <label for="season" class="form-label">Crop Season</label>
+                                        <select class="form-control" id="season">
+                                            <option value="">Select Season</option>
+                                            <option value="Spring">Spring</option>
+                                            <option value="Summer">Summer</option>
+                                            <option value="Fall">Fall</option>
+                                            <option value="Autumn">Autumn</option>
+                                            <option value="Winter">Winter</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <!-- Crop Image -->
+                                    <div class="col-md-6">
+                                        <label for="cropImage" class="form-label">Crop Image</label>
+                                        <input type="file" class="form-control" id="cropImage" accept="image/*" onchange="previewImage('cropImage', 'preview')">
+                                        <img id="preview" src="#" alt="Image Preview" class="img-fluid mt-2 d-none" style="max-height: 150px;">
+                                    </div>
+                                    <!-- Filed Ids -->
+                                    <div class="col-md-6">
+                                        <div class="d-flex justify-content-between align-items-center mb-2">
+                                            <label for="filed-cropId" class="form-label">Fields</label>
+                                            <button type="button" class="btn btn-success" id="addCropFieldButton">Add Crop</button>
+                                        </div>
+                                        <div id="initialCropField" class="input-group">
+                                            <select id="crop-filedId" class="form-control mt-2">
+                                                <option value="">Select Fields</option>
+                                            </select>
+                                        </div>
+                                        <div id="additionalField" class="mt-2"></div> <!-- Container for dynamic log inputs -->
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-success" form="cropForm">Add Crop</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="updateCropModal" tabindex="-1" aria-labelledby="updateFieldModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content" style="background-color: #2b2b2b; color: white;">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="updateCropModalLabel">Update Crop Details</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="filter: invert(1);"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="updateCropForm">
+                                <div class="row mb-3">
+                                    <!-- Crop Name -->
+                                    <div class="col-md-6">
+                                        <label for="updateCropName" class="form-label">Crop Name</label>
+                                        <input type="text" class="form-control" id="updateCropName">
+                                    </div>
+                                    <!-- Crop Scientific Name -->
+                                    <div class="col-md-6">
+                                        <label for="updateScientificName" class="form-label">Scientific Name</label>
+                                        <input type="text" class="form-control" id="updateScientificName">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <!-- Category Dropdown -->
+                                    <div class="col-md-6 mb-3">
+                                        <label for="updateCategory" class="form-label">Category</label>
+                                        <select class="form-select" id="updateCategory" required>
+                                            <!-- Options will be dynamically populated by JavaScript -->
+                                        </select>
+                                    </div>
+                                    <!-- Crop Season Dropdown -->
+                                    <div class="col-md-6 mb-3">
+                                        <label for="updateCropSeason" class="form-label">Crop Season</label>
+                                        <select class="form-select" id="updateCropSeason" required>
+                                            <!-- Options will be dynamically populated by JavaScript -->
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <!-- Crops Images -->
+                                    <div class="col-md-6">
+                                        <div class="col-md-6">
+                                            <label class="form-label">Image Preview</label>
+                                            <div>
+                                                <img id="updatePreview" src="#" alt="Image  Preview" class="d-none" width="100">
+                                            </div>
+                                            <input type="file" class="form-control mt-2" id="updateCropImage">
+                                        </div>
+                                    </div>
+                                    <!-- Field IDs -->
+                                        <div class="col-md-6">
+                                            <label for="cropFieldUpdate" class="form-label">Fields</label>
+                                            <button type="button" class="btn btn-success" id="addCropFieldButtonUpdate">Assign Fields</button>
+                                            <select id="cropFieldUpdate" class="form-control mt-2">
+                                                <option value="">Select Crop</option>
+                                            </select>
+                                        </div>
+
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-success" id="updateCropSaveButton" form="updateCropForm">Update Crop</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 </header>
 
@@ -305,6 +500,8 @@
 <script src="assets/lib/jquery-3.7.1.min.js"></script>
 <script type="module" src="controller/DashBoardController.js"></script>
 <script type="module" src="controller/FieldController.js"></script>
+<script type="module" src="controller/CropController.js"></script>
+
 <script>
     function previewImage(inputId, previewId) {
         const input = document.getElementById(inputId);

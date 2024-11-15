@@ -59,11 +59,11 @@ function showSection(sectionId) {
     $(".content section").hide();
     $(sectionId).show();
 }
-// $('#crops').on('click', () => showSection('#cropsSection'));
 $('#dashboard').on('click', () => showSection('#dashboard-sec'));
 $('#field').on('click', () => showSection('#field-sec'));
-// $('#staff').on('click', () => showSection('#staff-sec'));
-// $('#log').on('click', () => showSection('#logsSection'));
-// $('#vehicle').on('click', () => showSection('#vehicleSection'));
-// $('#equipment').on('click', () => showSection('#equipmentSection'));
-// $('#user').on('click', () => showSection('#userSection'));
+$('#crop').on('click', () => showSection('#crop-sec'));
+$('#staff').on('click', () => showSection('#staff-sec'));
+$('#log').on('click', () => showSection('#log-sec'));
+$('#vehicle').on('click', () => showSection('#vehicle-sec'));
+$('#equipment').on('click', () => showSection('#equipment-sec'));
+$('#user').on('click', () => showSection('#user-sec'));

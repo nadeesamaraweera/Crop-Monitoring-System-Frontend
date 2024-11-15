@@ -1,7 +1,7 @@
 export let cropList = [
-    { id: 1, name: 'Wheat' },
-    { id: 2, name: 'Corn' },
-    { id: 3, name: 'Soybean' }
+    // { id: 1, name: 'Wheat' },
+    // { id: 2, name: 'Corn' },
+    // { id: 3, name: 'Soybean' }
 ];
 
 export let staffList = [
