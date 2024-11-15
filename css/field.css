@@ -126,17 +126,7 @@
     background-color: #218838; /* Darker green on hover */
 }
 
-#gpsIcon {
-    position: absolute;
-    right: 60vh;
-    top: 37%;
-    transform: translateY(-50%);
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    font-size: 1.2em;
-    color: #007bff;
-}
+
 
 
 

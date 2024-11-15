@@ -7,8 +7,8 @@ let fieldCodeCounter = 1;
 let editingRow = null;
 const searchField = document.getElementById('searchField');
 
-
 function selectLocation() {
+    console.log("Getting location...");
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
             (position) => {
@@ -16,41 +16,50 @@ function selectLocation() {
                 const longitude = position.coords.longitude;
                 document.getElementById("fieldLocation").value = `${latitude}, ${longitude}`;
                 alert("Location set successfully!");
+                console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
             },
             (error) => {
+                console.error("Error retrieving location:", error);
                 alert("Unable to retrieve location. Please try again.");
             }
         );
     } else {
         alert("Geolocation is not supported by this browser.");
+        console.error("Geolocation not supported.");
     }
 }
-
-
+document.getElementById("location").addEventListener("click", selectLocation);  // Add this line
+document.getElementById("updateLocation").addEventListener("click", selectLocation);  // Add this line
 // Search functionality
 if (searchField && tableBody) {
     searchField.addEventListener('input', function () {
         try {
             const query = this.value.toLowerCase();
             const rows = tableBody.querySelectorAll('tr');
+            let foundMatch = false;
 
             rows.forEach(row => {
                 const fieldName = row.cells[1]?.textContent.toLowerCase();
                 const location = row.cells[2]?.textContent.toLowerCase();
                 const extentSize = row.cells[3]?.textContent.toLowerCase();
+                const crops = row.cells[4]?.textContent.toLowerCase();
 
-                if (fieldName.includes(query) || location.includes(query) || extentSize.includes(query)) {
+                if (fieldName.includes(query) || location.includes(query) || extentSize.includes(query) || crops.includes(query)) {
                     row.style.display = '';
+                    foundMatch = true;
                 } else {
                     row.style.display = 'none';
                 }
             });
+
+            if (!foundMatch && query) {
+                alert("No matching field records found.");
+            }
         } catch (error) {
             console.error("Search error:", error);
         }
     });
 }
-
 // Populate dropdowns for crops and staff
 function populateDropdowns() {
     const cropDropdown = document.getElementById("filed-cropId");
@@ -70,7 +79,6 @@ function populateDropdowns() {
         staffDropdown.appendChild(option);
     });
 }
-
 // Populate dropdowns for update modal
 function populateUpdateDropdowns() {
     const cropDropdown = document.getElementById("fieldCropUpdate");
@@ -95,7 +103,6 @@ function populateUpdateDropdowns() {
 }
 
 populateDropdowns();
-
 // Clear image previews
 function clearImagePreviews() {
     const preview1 = document.getElementById('preview1');
@@ -110,13 +117,12 @@ function clearImagePreviews() {
         preview2.classList.add('d-none');
     }
 }
-
 // Handle the form submission (for both adding and updating fields)
 fieldForm.addEventListener("submit", function (event) {
     event.preventDefault();
 
     const fieldName = document.getElementById("fieldName").value.trim();
-    const fieldLocation = document.getElementById("selectLocation").value.trim();
+    const fieldLocation = document.getElementById("fieldLocation").value.trim();
     const extentSize = document.getElementById("extentSize").value.trim();
     const staff = document.getElementById("filed-staffId").value;
     const crop = document.getElementById("filed-cropId").value;

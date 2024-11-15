@@ -153,13 +153,17 @@
                                     <!-- Field Location -->
                                     <div class="col-md-6">
                                         <label for="fieldLocation" class="form-label">Field Location (Coordinate)</label>
-                                        <input type="text" class="form-control" id="fieldLocation" placeholder="Enter GPS coordinates (e.g., 40.7128,-74.0060)" required>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="fieldLocation" placeholder="Enter GPS coordinates (e.g., 40.7128,-74.0060)" required>
+                                            <button id="location" type="button" class="btn btn-secondary" onclick="selectLocation()">
+                                                <i class="fas fa-map-marker-alt"></i>
+                                            </button>
+                                        </div>
                                     </div>
                                     <!-- Extent Size -->
                                     <div class="col-md-6">
                                         <label for="extentSize" class="form-label">Extent Size(Sq. m)</label>
                                         <input type="number" class="form-control" id="extentSize" placeholder="Enter extent in square meters" required>
-                                        <button id="gpsIcon" onclick="selectLocation()"><i  class="fas fa-map-marker-alt"></i></button>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -233,8 +237,13 @@
                                 <!-- Location -->
                                 <div class="row mb-3">
                                     <div class="col-md-6">
-                                            <label for="updateFieldLocation" class="form-label">Field Location (Coordinate)</label>
+                                        <label for="fieldLocation" class="form-label">Field Location (Coordinate)</label>
+                                        <div class="input-group">
                                             <input type="text" class="form-control" id="updateFieldLocation" placeholder="Enter GPS coordinates (e.g., 40.7128,-74.0060)" required>
+                                            <button id="updateLocation" type="button" class="btn btn-secondary" onclick="selectLocation()">
+                                                <i class="fas fa-map-marker-alt"></i>
+                                            </button>
+                                        </div>
                                     </div>
                                     <!-- Extent Size -->
                                     <div class="col-md-6">
