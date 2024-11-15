@@ -41,21 +41,6 @@
     text-align: center;
     padding: 20px 0;
 }
-
-/* Responsive Sidebar */
-@media (max-width: 768px) {
-    .sidebar {
-        transform: translateX(-100%); /* Hide sidebar by default on mobile */
-    }
-    .sidebar.active {
-        transform: translateX(0); /* Show sidebar when active */
-        z-index: 1000; /* Place it above other content */
-    }
-    .content {
-        margin-left: 0; /* Remove margin when sidebar is hidden */
-    }
-}
-
 /* Link and button styling */
 .sidebar a, .sidebar button {
     display: flex;
@@ -100,7 +85,6 @@
     margin-left: 250px;
     padding: 20px;
 }
-
 /* Card styling */
 .card {
     border: 1px solid #4caf50;
@@ -112,23 +96,46 @@
 .card h5 {
     color: #038c13;
 }
-
 .btn-primary:hover {
     background-color: #21ca38;
 }
-
-/* Mobile adjustments */
+/* Sidebar full-screen overlay for mobile */
 @media (max-width: 768px) {
-    .top-bar {
-        margin-left: 0;
+    .sidebar {
+        width: 100%;
+        position: fixed;
+        transform: translateX(-100%);
     }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
     .content {
         margin-left: 0;
-        padding: 10px;
+        padding: 15px;
     }
 
+    /* Center the toggle button on smaller screens */
     #toggleSidebar {
-        display: none;
-
+        display: block;
+        position: fixed;
+        left: 10px;
+        top: 15px;
+        z-index: 1001; /* Above content but below sidebar when opened */
     }
 }
+
+/* Responsive card layout */
+@media (max-width: 576px) {
+    .row .col-md-4, .row .col-md-6 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .card {
+        margin-bottom: 10px;
+    }
+}
+
+
