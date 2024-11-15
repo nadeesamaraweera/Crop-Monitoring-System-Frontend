@@ -8,9 +8,7 @@
     left: 0;
     width: 250px;
     border-right: 1px solid gray;
-    transition: transform 0.3s ease; /* Smooth transition for toggle */
 }
-
 .sidebar a {
     color: white;
     text-decoration: none;
@@ -18,124 +16,104 @@
     padding: 15px;
     border-bottom: 1px solid gray;
 }
-
 .sidebar .logout {
+    margin-bottom: 10px;
     position: absolute;
     bottom: 20px;
     width: 90%;
     left: 5%;
 }
-
 .logo-img {
     background-color: #e8f5e9;
-    padding: 10px;
-    border-radius: 50%;
-    width: 140px;
+    padding: 10px; /* Adjust padding as needed */
+    border-radius: 50%; /* Makes the logo circular */
+    width: 140px; /* Set width and height to the same value for a perfect circle */
     height: 140px;
     object-fit: cover;
-    display: block;
-    margin: auto; /* Center image */
+    align-content: center/* Ensures the logo scales correctly within the circle */
 }
-
 .logo-container {
-    text-align: center;
-    padding: 20px 0;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    padding: 10px; /* Adjust padding to control spacing around the logo */
 }
-/* Link and button styling */
 .sidebar a, .sidebar button {
     display: flex;
     align-items: center;
     color: #fff;
     text-decoration: none;
-    font-size: 1em;
+    font-size: 1em; /* Optional: Increase font size */
     border-radius: 5px;
     transition: background-color 0.3s;
 }
-
 .sidebar a:hover, .sidebar button:hover {
     background-color: #474646;
 }
-
 .icon {
-    font-size: 1.5em;
-    margin-right: 15px;
+    font-size: 1.5em; /* Increase icon size */
+    margin-right: 15px; /* Space between icon and text */
 }
-
 #btn-logout {
     font-size: 1.4em;
-    padding: 5px;
+    padding: 12px;
     text-align: center;
-    background-color: #42a145;
+    margin-bottom: 2px;
+    background-color: #42a145;;
 }
-
-#btn-logout:hover {
+#btn-logout:hover{
     background-color: #21ca38;
 }
-
-.top-bar {
-    background-color: #4caf50;
-    color: white;
-    padding: 15px;
-    font-size: 2rem;
-    text-align: center;
-    border-radius: 0 15px 15px 0;
+.welcome-bar {
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Space between items */
+    align-items: center; /* Center items vertically */
+    background-color: #4CAF50; /* Green background */
+    color: white; /* Text color */
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px; /* Adequate padding */
+}
+.welcome-bar h1 {
+    font-size: 2rem; /* Size of the heading */
+    text-align: center; /* Center the heading text */
+    margin: 0; /* Remove default margin */
+}
+.date-time-container {
+    text-align: right; /* Align date and time to the right */
+}
+#currentDate, #currentTime {
+    margin: 0; /* Remove default margin */
+    font-size: 1rem; /* Size for date and time */
+}
+.card-text {
+    font-size: 2rem; /* Large size for the count */
+    font-weight: bold; /* Bold text for emphasis */
+    color: #4CAF50; /* Green color for the text */
+    margin-bottom: 15px; /* Space below the count */
+}
+.card h5{
+    color: #028314;
 }
 
-.content {
-    margin-left: 250px;
-    padding: 20px;
-}
-/* Card styling */
-.card {
-    border: 1px solid #4caf50;
-    box-shadow: 0 4px 8px rgba(76, 175, 80, 0.5);
-    margin-bottom: 15px;
-    color: #21ca38;
-}
-
-.card h5 {
-    color: #038c13;
-}
-.btn-primary:hover {
+.btn-primary:hover{
     background-color: #21ca38;
 }
-/* Sidebar full-screen overlay for mobile */
+/* Responsive adjustments */
 @media (max-width: 768px) {
     .sidebar {
         width: 100%;
-        position: fixed;
-        transform: translateX(-100%);
+        min-height: auto;
+        position: relative;
     }
-
-    .sidebar.active {
-        transform: translateX(0);
-    }
-
-    .content {
-        margin-left: 0;
-        padding: 15px;
-    }
-
-    /* Center the toggle button on smaller screens */
-    #toggleSidebar {
-        display: block;
-        position: fixed;
-        left: 10px;
-        top: 15px;
-        z-index: 1001; /* Above content but below sidebar when opened */
-    }
-}
-
-/* Responsive card layout */
-@media (max-width: 576px) {
-    .row .col-md-4, .row .col-md-6 {
-        flex: 0 0 100%;
-        max-width: 100%;
-    }
-
     .card {
-        margin-bottom: 10px;
+        margin-bottom: 20px; /* Space between cards on smaller screens */
+    }
+
+    .sidebar .logout {
+        margin-top: auto; /* Pushes the logout button to the bottom */
+        position: absolute;
+        bottom: -60px;
+        width: 40%;
+        left: 2%;
     }
 }
-
-
