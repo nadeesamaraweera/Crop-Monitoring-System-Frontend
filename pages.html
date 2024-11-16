@@ -347,7 +347,7 @@
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content" style="background-color: #2b2b2b; color: white;">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="newCropModalLabel">Add New Field Details</h5>
+                            <h5 class="modal-title" id="newCropModalLabel">Add New Crop Details</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="filter: invert(1);"></button>
                         </div>
                         <div class="modal-body">
@@ -371,27 +371,12 @@
                                     <div class="col-md-6">
                                         <label for="cropCategory" class="form-label">Category</label>
                                         <label for="cropCategory"></label>
-                                        <select class="form-control" id="cropCategory">
-                                            <option value="">Select Category</option>
-                                            <option value="Vegetable">Vegetable</option>
-                                            <option value="Fruit">Fruit</option>
-                                            <option value="Grain">Grain</option>
-                                            <option value="Herb">Herb</option>
-                                            <option value="Legume">Legume</option>
-                                            <option value="Other">Other</option>
-                                        </select>
+                                        <select class="form-control" id="cropCategory"></select>
                                     </div>
                                     <!-- Crop Season -->
                                     <div class="col-md-6">
                                         <label for="season" class="form-label">Crop Season</label>
-                                        <select class="form-control" id="season">
-                                            <option value="">Select Season</option>
-                                            <option value="Spring">Spring</option>
-                                            <option value="Summer">Summer</option>
-                                            <option value="Fall">Fall</option>
-                                            <option value="Autumn">Autumn</option>
-                                            <option value="Winter">Winter</option>
-                                        </select>
+                                        <select class="form-control" id="season"></select>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -405,7 +390,7 @@
                                     <div class="col-md-6">
                                         <div class="d-flex justify-content-between align-items-center mb-2">
                                             <label for="filed-cropId" class="form-label">Fields</label>
-                                            <button type="button" class="btn btn-success" id="addCropFieldButton">Add Crop</button>
+                                            <button type="button" class="btn btn-success" id="addCropFieldButton">Add Field</button>
                                         </div>
                                         <div id="initialCropField" class="input-group">
                                             <select id="crop-filedId" class="form-control mt-2">
@@ -463,7 +448,7 @@
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <!-- Crops Images -->
+                                    <!-- Crops Image -->
                                     <div class="col-md-6">
                                         <div class="col-md-6">
                                             <label class="form-label">Image Preview</label>
@@ -478,7 +463,7 @@
                                             <label for="cropFieldUpdate" class="form-label">Fields</label>
                                             <button type="button" class="btn btn-success" id="addCropFieldButtonUpdate">Assign Fields</button>
                                             <select id="cropFieldUpdate" class="form-control mt-2">
-                                                <option value="">Select Crop</option>
+                                                <option value="">Select Field</option>
                                             </select>
                                         </div>
 
