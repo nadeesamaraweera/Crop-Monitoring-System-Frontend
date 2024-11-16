@@ -18,9 +18,9 @@ if (searchStaff && tableBody) {
             rows.forEach(row => {
                 const staffCode = row.cells[1]?.textContent.toLowerCase();
                 const addressLine3 = row.cells[2]?.textContent.toLowerCase();
-                const roleStaff = row.cells[3]?.textContent.toLowerCase();
+                const staffRole = row.cells[3]?.textContent.toLowerCase();
 
-                if (staffCode.includes(query) || addressLine3.includes(query) || roleStaff.includes(query)) {
+                if (staffCode.includes(query) || addressLine3.includes(query) || staffRole.includes(query)) {
                     row.style.display = '';
                 } else {
                     row.style.display = 'none';
@@ -33,6 +33,12 @@ if (searchStaff && tableBody) {
             console.error("Search error:", error);
         }
     });
+}
+function formatDate(dateString) {
+    const date = new Date(dateString);
+    return `${(date.getMonth() + 1).toString().padStart(2, '0')}/${
+        date.getDate().toString().padStart(2, '0')
+    }/${date.getFullYear()}`;
 }
 
 // Handle the form submission (for both adding and updating fields)
@@ -52,17 +58,15 @@ staffForm.addEventListener("submit", function (event) {
     const addressLine5 = document.getElementById("addressLine05").value;
     const contactNo = document.getElementById("contactNo").value;
     const emailStaff = document.getElementById("emailStaff").value;
-    const roleStaff = document.getElementById("roleStaff").value;
-    const fieldStaff = document.getElementById("filed-staff").value;
-    const vehicleStaff = document.getElementById("vehicle-staff").value;
+    const staffRole = document.getElementById("roleStaff").value;
+    const fieldStaff = document.getElementById("filedStaff").value;
+    const vehicleStaff = document.getElementById("vehicleStaff").value;
 
 
-    if (!firstName || !lastName || !designation || !gender || !joinedDate || !dob ||!addressLine1 ||!addressLine2 ||!addressLine3 ||!addressLine4 ||!addressLine5  || !contactNo ||!emailStaff ||!roleStaff) {
+    if (!firstName || !lastName || !designation || !gender || !joinedDate || !dob ||!addressLine1 ||!addressLine2 ||!addressLine3 ||!addressLine4 ||!addressLine5  || !contactNo ||!emailStaff ||!staffRole ) {
         alert("Please fill in all fields.");
         return;
     }
-
-
     if (editingRow) {
         // Update the existing field
         const staffIndex = editingRow.dataset.index;
@@ -82,8 +86,9 @@ staffForm.addEventListener("submit", function (event) {
         staff.addressLine5 = addressLine5;
         staff.contactNo = contactNo;
         staff.email = emailStaff;
-        staff.fields = fieldStaff;
-        staff.vehicle = vehicleStaff;
+        staff.staffRole = staffRole;
+        staff.stafffields = fieldStaff;
+        staff.staffVehicle = vehicleStaff;
 
         // Update the row in the table
         updateTableRow(staff, staffIndex);
@@ -95,7 +100,7 @@ staffForm.addEventListener("submit", function (event) {
     } else {
         // Add new crop
         const staffCode = "ST0" + staffCodeCounter++;
-        const newStaff = new StaffModel(staffCode,firstName, lastName,designation, gender,joinedDate, dob,addressLine1,addressLine2,addressLine3,addressLine4,addressLine5,contactNo,emailStaff,fieldStaff,vehicleStaff );
+        const newStaff = new StaffModel(staffCode,firstName, lastName,designation, gender,joinedDate, dob,addressLine1,addressLine2,addressLine3,addressLine4,addressLine5,contactNo,emailStaff,staffRole,fieldStaff,vehicleStaff );
         staffList.push(newStaff);
         addRowToTable(newStaff, staffList.length - 1);
         alert("New Staff added successfully!");
@@ -138,8 +143,8 @@ function addRowToTable(staff, index) {
         <td>${staff.lastName}</td>
         <td>${staff.designation}</td>
         <td>${staff.gender}</td>
-        <td>${staff.joinedDate}</td>
-        <td>${staff.dob}</td>
+        <td>${formatDate(staff.joinedDate)}</td>
+        <td>${formatDate(staff.dob)}</td>
         <td>${staff.addressLine1}</td>
         <td>${staff.addressLine2}</td>
         <td>${staff.addressLine3}</td>
@@ -151,7 +156,7 @@ function addRowToTable(staff, index) {
         <td>${staff.staffFields}</td>
         <td>${staff.staffVehicle}</td>
         <td>
-            <button class="btn btn-warning btn-sm edit-btn">Update</button>
+            <button class="btn btn-warning btn-sm edit-btn">Update</button><br>
             <button class="btn btn-danger btn-sm delete-btn">Delete</button>
         </td>
     `;
@@ -179,8 +184,10 @@ tableBody.addEventListener("click", function (event) {
         document.getElementById("lastNameUpdate").value = staff.lastName;
         document.getElementById("designationUpdate").value = staff.designation;
         document.getElementById("genderUpdate").value = staff.gender;
-        document.getElementById("joinedDateUpdate").value = staff.joinedDate;
-        document.getElementById("dobUpdate").value = staff.dob;
+        // Convert joinedDate and dob to YYYY-MM-DD format
+        document.getElementById("joinedDateUpdate").value = new Date(staff.joinedDate).toISOString().split('T')[0];
+        document.getElementById("dobUpdate").value = new Date(staff.dob).toISOString().split('T')[0];
+
         document.getElementById("addressLine01Update").value = staff.addressLine1;
         document.getElementById("addressLine02Update").value = staff.addressLine2;
         document.getElementById("addressLine03Update").value = staff.addressLine3;
@@ -207,7 +214,7 @@ tableBody.addEventListener("click", function (event) {
 // Initial render of the table
 renderTable();
 
-document.getElementById("updateCropForm").addEventListener("submit", function (event) {
+document.getElementById("updateStaffForm").addEventListener("submit", function (event) {
     event.preventDefault();
     if (editingRow) {
         // Get values from the update crop form fields
@@ -245,8 +252,6 @@ document.getElementById("updateCropForm").addEventListener("submit", function (e
         cells[14].innerText = staffRole;
         cells[15].innerText = staffFields;
         cells[16].innerText = staffVehicle;
-
-
         alert("Staff updated successfully!");
         editingRow = null;
         const updateStaffModalEl = document.getElementById('updateStaffModal');
