@@ -478,6 +478,399 @@
                 </div>
             </div>
         </section>
+        <section id="staff-sec" style="display: none" >
+            <div class="container mt-4">
+                <div class="col-xl-12 col-sm-12 col-12 mb-4">
+                    <div class="title-card">
+                        <div class="title-heading">
+                            <label class="title" style="font-size: 25px;font-weight: 700" > Staff Summary </label>
+                            <button type="button" class="new-button flex-grow-1" data-bs-toggle="modal" data-bs-target="#newStaffModal"><i class="fas fa-plus plus-icon"></i>Add New</button>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- Search bar -->
+                    <div class="mb-3" style="margin-left: 145vh;"> <!-- Adjust the margin as needed -->
+                        <div class="input-group mb-3" style="width: 350px;">
+                            <input type="text" id="searchStaff" class="form-control" placeholder="Search staffs" aria-label="Search">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="table-responsive">
+                        <table class="table  custom-table no-footer" id="tbl-staff">
+                            <thead>
+                            <tr>
+                                <th>Code</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Designation</th>
+                                <th>Gender</th>
+                                <th>Joined date</th>
+                                <th>DOB</th>
+                                <th>Building No/Name</th>
+                                <th>Lane</th>
+                                <th>City</th>
+                                <th>State</th>
+                                <th>Postal Code</th>
+                                <th>Contact No</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Field</th>
+                                <th>Vehicle</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- New Staff Modal -->
+                <div class="modal fade" id="newStaffModal" tabindex="-1" aria-labelledby="newStaffModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content" style="background-color: #2b2b2b; color: white;">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="newStaffModalLabel">Add New Staff Details</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="filter: invert(1);"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="staffForm">
+                                    <div class="row mb-3">
+                                        <!-- First Name -->
+                                        <div class="col-md-6">
+                                            <label for="firstName" class="form-label">First Name</label>
+                                            <input type="text" class="form-control" id="firstName">
+                                        </div>
+                                        <!-- Last Name -->
+                                        <div class="col-md-6">
+                                            <label for="lastName" class="form-label">Last Name</label>
+                                            <input type="text" class="form-control" id="lastName">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <!-- Designation -->
+                                        <div class="col-md-6">
+                                            <label for="designation" class="form-label">Designation</label>
+                                            <select class="form-control" id="designation">
+                                                <option value="" disabled selected>Select designation</option>
+                                                <option value="manager">Manager</option>
+                                                <option value="seniorAssistantManager">Senior Assistant Manager</option>
+                                                <option value="assistantManager">Assistant Manager</option>
+                                                <option value="admin">Admin</option>
+                                                <option value="HRStaff">HR Staff</option>
+                                                <option value="officeAssistant">Office Assistant</option>
+                                                <option value="seniorAgronomist">Senior Agronomist</option>
+                                                <option value="agronomist">Agronomist</option>
+                                                <option value="soilScientist">Soil scientist</option>
+                                                <option value="seniorTechnician">Senior Technician</option>
+                                                <option value="technician">Technician</option>
+                                                <option value="supervisors">Supervisors</option>
+                                                <option value="labors">Labors</option>
+                                                <option value="labors">Others</option>
+                                            </select>
+                                        </div>
+                                        <!-- Gender -->
+                                        <div class="col-md-6">
+                                            <label for="gender" class="form-label">Gender</label>
+                                            <select class="form-control" id="gender">
+                                                <option value="" disabled selected>Select gender</option>
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <!-- Joined Date-->
+                                        <div class="col-md-6">
+                                            <label for="joinedDate" class="form-label">Joined Date</label>
+                                            <input type="text" class="form-control" id="joinedDate" placeholder="Select Date">
+                                        </div>
+                                        <!-- DOB -->
+                                        <div class="col-md-6">
+                                            <label for="dob" class="form-label">Date Of Birth</label>
+                                            <input type="text" class="form-control" id="dob" placeholder="Select Date">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <!-- Address Line01 -->
+                                        <div class="col-md-6">
+                                            <label for="addressLine01" class="form-label">Address Line01</label>
+                                            <input type="text" class="form-control" id="addressLine01" placeholder="Building No or Name">
+                                        </div>
+                                        <!-- Address Line02 -->
+                                        <div class="col-md-6">
+                                            <label for="addressLine02" class="form-label">Address Line02</label>
+                                            <input type="text" class="form-control" id="addressLine02" placeholder="lane">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <!-- Address Line03 -->
+                                        <div class="col-md-6">
+                                            <label for="addressLine03" class="form-label">Address Line03</label>
+                                            <input type="text" class="form-control" id="addressLine03" placeholder="main city">
+                                        </div>
+                                        <!-- Address Line04 -->
+                                        <div class="col-md-6">
+                                            <label for="addressLine04" class="form-label">Address Line04</label>
+                                            <input type="text" class="form-control" id="addressLine04" placeholder="main state">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <!-- Address Line05 -->
+                                        <div class="col-md-6">
+                                            <label for="addressLine05" class="form-label">Address Line05</label>
+                                            <input type="text" class="form-control" id="addressLine05" placeholder="postal code">
+                                        </div>
+                                        <!-- Contact NO -->
+                                        <div class="col-md-6">
+                                            <label for="contactNo" class="form-label">Contact No</label>
+                                            <input type="text" class="form-control" id="contactNo">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <!-- Email -->
+                                        <div class="col-md-6">
+                                            <label for="emailStaff" class="form-label">Email</label>
+                                            <input type="text" class="form-control" id="emailStaff">
+                                        </div>
+                                        <!-- Role -->
+                                        <div class="col-md-6">
+                                            <label for="roleStaff" class="form-label">Role</label>
+                                            <select class="form-control" id="roleStaff">
+                                                <option value="" disabled selected>Select Role</option>
+                                                <option value="MANAGER">MANAGER</option>
+                                                <option value="ADMINISTRATIVE">ADMINISTRATIVE</option>
+                                                <option value="OTHER">OTHER</option>
+                                                <option value="SCIENTIST">SCIENTIST</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <!-- Add Filed -->
+                                        <div class="col-md-6">
+                                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                                <label for="filed-staff" class="form-label">Fields</label>
+                                                <button type="button" class="btn btn-success" id="addStaffFieldButton">Add Field</button>
+                                            </div>
+                                            <!-- Initial dropdown with predefined options -->
+                                            <div id="initialFieldStaff" class="input-group">
+                                                <select id="filed-staff" class="form-control mt-2">
+                                                    <option value="">Select Field</option>
+                                                </select>
+                                            </div>
+                                            <!-- Container for additional dynamic dropdowns -->
+                                            <div id="additionalStaffField" class="mt-2"></div>
+                                        </div>
+                                        <!-- Vehicle -->
+                                        <div class="col-md-6">
+                                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                                <label for="vehicle-staff" class="form-label">Vehicle</label>
+                                                <button type="button" class="btn btn-success" id="addStaffVehicleButton">Add Vehicle</button>
+                                            </div>
+                                            <!-- Initial dropdown with predefined options -->
+                                            <div id="initialStaffVehicle" class="input-group">
+                                                <select id="vehicle-staff" class="form-control mt-2">
+                                                    <option value="">Select Vehicle</option>
+                                                </select>
+                                            </div>
+                                            <!-- Container for additional dynamic dropdowns -->
+                                            <div id="additionalStaffVehicle" class="mt-2"></div>
+                                        </div>
+                                    </div>
+<!--                                    <div class="row mb-3">-->
+<!--                                        &lt;!&ndash; Equipment &ndash;&gt;-->
+<!--                                        <div class="col-md-6">-->
+<!--                                            <div class="d-flex justify-content-between align-items-center mb-2">-->
+<!--                                                <label for="equipment-staff" class="form-label">Equipment</label>-->
+<!--                                                <button type="button" class="btn btn-success" id="addStaffEquipmentButton">Add Equipment</button>-->
+<!--                                            </div>-->
+<!--                                            &lt;!&ndash; Initial dropdown with predefined options &ndash;&gt;-->
+<!--                                            <div id="initialStaffEquipment" class="input-group">-->
+<!--                                                <select id="equipment-staff" class="form-control mt-2">-->
+<!--                                                    <option value="">Select Equipment</option>-->
+<!--                                                </select>-->
+<!--                                            </div>-->
+<!--                                            &lt;!&ndash; Container for additional dynamic dropdowns &ndash;&gt;-->
+<!--                                            <div id="additionalStaffEquipment" class="mt-2"></div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-success" id="addFieldButtonInStaff" form="staffForm">Add Staff</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Update Staff Modal -->
+                <div class="modal fade" id="updateStaffModal" tabindex="-1" aria-labelledby="updateStaffModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content" style="background-color: #2b2b2b; color: white;">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="updateStaffModalLabel">Update Staff Details</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="filter: invert(1);"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="updateStaffForm">
+                                    <div class="row mb-3">
+                                        <!-- First Name -->
+                                        <div class="col-md-6">
+                                            <label for="firstNameUpdate" class="form-label">First Name</label>
+                                            <input type="text" class="form-control" id="firstNameUpdate">
+                                        </div>
+                                        <!-- Last Name -->
+                                        <div class="col-md-6">
+                                            <label for="lastNameUpdate" class="form-label">Last Name</label>
+                                            <input type="text" class="form-control" id="lastNameUpdate">
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <!-- Joined Date-->
+                                        <div class="col-md-6">
+                                            <label for="joinedDateUpdate" class="form-label">Joined Date</label>
+                                            <input type="text" class="form-control" id="joinedDateUpdate">
+                                        </div>
+                                        <!-- Designation -->
+                                        <div class="col-md-6">
+                                            <label for="designationUpdate" class="form-label">Designation</label>
+                                            <select class="form-control" id="designationUpdate">
+                                                <option value="" disabled selected>Select designation</option>
+                                                <option value="manager">Manager</option>
+                                                <option value="seniorAssistantManager">Senior Assistant Manager</option>
+                                                <option value="assistantManager">Assistant Manager</option>
+                                                <option value="admin">Admin</option>
+                                                <option value="adminHRStaff">HR Staff</option>
+                                                <option value="officeAssistant">Office Assistant</option>
+                                                <option value="seniorAgronomist">Senior Agronomist</option>
+                                                <option value="Agronomist">Agronomist</option>
+                                                <option value="soilScientist">Soil scientist</option>
+                                                <option value="seniorTechnician">Senior Technician</option>
+                                                <option value="technician">Technician</option>
+                                                <option value="supervisors">Supervisors</option>
+                                                <option value="labors">Labors</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <!-- Gender -->
+                                        <div class="col-md-6">
+                                            <label for="genderUpdate" class="form-label">Gender</label>
+                                            <select class="form-control" id="genderUpdate">
+                                                <option value="" disabled selected>Select gender</option>
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                            </select>
+                                        </div>
+                                        <!-- DOB -->
+                                        <div class="col-md-6">
+                                            <label for="dob" class="form-label">Date Of Birth</label>
+                                            <input type="text" class="form-control" id="dobUpdate">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <!-- Address Line01 -->
+                                        <div class="col-md-6">
+                                            <label for="addressLine01Update" class="form-label">Address Line01</label>
+                                            <input type="text" class="form-control" placeholder="building no" id="addressLine01Update">
+                                        </div>
+                                        <!-- Address Line02 -->
+                                        <div class="col-md-6">
+                                            <label for="addressLine02Update" class="form-label">Address Line02</label>
+                                            <input type="text" class="form-control" placeholder="lane" id="addressLine02Update">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <!-- Address Line03 -->
+                                        <div class="col-md-6">
+                                            <label for="addressLine03Update" class="form-label">Address Line03</label>
+                                            <input type="text" class="form-control" placeholder="main city" id="addressLine03Update">
+                                        </div>
+                                        <!-- Address Line04 -->
+                                        <div class="col-md-6">
+                                            <label for="addressLine04Update" class="form-label">Address Line04</label>
+                                            <input type="text" class="form-control" placeholder="main state" id="addressLine04Update">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <!-- Address Line05 -->
+                                        <div class="col-md-6">
+                                            <label for="addressLine05Update" class="form-label">Address Line05</label>
+                                            <input type="text" class="form-control" placeholder="postal code" id="addressLine05Update">
+                                        </div>
+                                        <!-- Contact NO -->
+                                        <div class="col-md-6">
+                                            <label for="ContactNoUpdate" class="form-label">Contact No</label>
+                                            <input type="text" class="form-control" id="ContactNoUpdate">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <!-- Email -->
+                                        <div class="col-md-6">
+                                            <label for="emailStaffUpdate" class="form-label">Email</label>
+                                            <input type="text" class="form-control" id="emailStaffUpdate">
+                                        </div>
+                                        <!-- Role -->
+                                        <div class="col-md-6">
+                                            <label for="roleStaffUpdate" class="form-label">Role</label>
+                                            <select class="form-control" id="roleStaffUpdate">
+                                                <option value="" disabled selected>Select Role</option>
+                                                <option value="MANAGER">MANAGER</option>
+                                                <option value="ADMINISTRATIVE">ADMINISTRATIVE</option>
+                                                <option value="OTHER">OTHER</option>
+                                                <option value="SCIENTIST">SCIENTIST</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <!-- Filed List -->
+                                        <div class="col-md-6">
+                                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                                <label class="form-label">Fields</label>
+                                                <button type="button" class="btn btn-success" id="addStaffFieldButtonUpdate">Assign New Field</button>
+                                            </div>
+                                            <!-- Initial dropdown with predefined options -->
+                                            <div id="initialFieldStaffUpdate" class="input-group">
+                                                <select id="filed-staffUpdate" class="form-control mt-2">
+                                                    <option value="">Select Field</option>
+                                                </select>
+                                            </div>
+                                            <!-- Container for additional dynamic dropdowns -->
+                                            <div id="additionalStaffFieldUpdate" class="mt-2"></div>
+                                            <div class="mb-3 mt-3" id="updateStaffFieldContainer">
+                                                <div id="updateField"></div> <!-- Field container for dynamic inputs -->
+                                            </div>
+                                        </div>
+                                        <!-- Vehicle List -->
+                                        <div class="col-md-6">
+                                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                                <label class="form-label">Vehicle</label>
+                                                <button type="button" class="btn btn-success" id="addStaffVehicleButtonUpdate">Assign New Vehicle</button>
+                                            </div>
+                                            <!-- Initial dropdown with predefined options -->
+                                            <div id="initialStaffVehicleUpdate" class="input-group">
+                                                <select id="vehicle-staffUpdate" class="form-control mt-2">
+                                                    <option value="">Select Vehicle</option>
+                                                </select>
+                                            </div>
+                                            <!-- Container for additional dynamic dropdowns -->
+                                            <div id="additionalStaffVehicleUpdate" class="mt-2"></div>
+                                            <div class="mb-3 mt-3" id="updateStaffVehicleContainer">
+                                                <div id="updateVehicle"></div> <!-- Vehicle container for dynamic inputs -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-success" id="updateMemberButton" form="updateStaffForm">Update Member</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 </header>
 
@@ -486,6 +879,7 @@
 <script type="module" src="controller/DashBoardController.js"></script>
 <script type="module" src="controller/FieldController.js"></script>
 <script type="module" src="controller/CropController.js"></script>
+<script type="module" src="controller/StaffController.js"></script>
 
 <script>
     function previewImage(inputId, previewId) {

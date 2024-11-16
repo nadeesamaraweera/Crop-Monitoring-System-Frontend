@@ -28,7 +28,7 @@ if (searchCrop && tableBody) {
                 }
             });
             if (!foundMatch && query) {
-                alert("No matching field records found.");
+                alert("No matching crop records found.");
             }
         } catch (error) {
             console.error("Search error:", error);
