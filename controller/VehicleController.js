@@ -17,8 +17,10 @@ if (searchVehicle && tableBody) {
             rows.forEach(row => {
                 const vehicleCode = row.cells[1]?.textContent.toLowerCase();
                 const licenseNumber = row.cells[2]?.textContent.toLowerCase();
+                const vehicleStatus = row.cells[3]?.textContent.toLowerCase();
 
-                if (vehicleCode.includes(query) || licenseNumber.includes(query)) {
+
+                if (vehicleCode.includes(query) || licenseNumber.includes(query) || vehicleStatus.includes(query)) {
                     row.style.display = '';
                     foundMatch = true;
                 } else {
@@ -108,12 +110,12 @@ vehicleForm.addEventListener("submit", function (event) {
 // // Function to update table row
 function updateTableRow(vehicle, index) {
     const row = tableBody.querySelector(`tr[data-index='${index}']`);
-    row.cells[1].textContent = vehicle.licenseNumber
-    row.cells[2].textContent = vehicle.vehicleCategory
-    row.cells[3].textContent = vehicle.fuelType
-    row.cells[4].textContent = vehicle.vehicleStatus
-    row.cells[5].textContent = vehicle.vehicleAllocatedStaff
-    row.cells[6].textContent = vehicle.vehicleRemark
+    row.cells[1].textContent = vehicle.licenseNumber;
+    row.cells[2].textContent = vehicle.vehicleCategory;
+    row.cells[3].textContent = vehicle.fuelType;
+    row.cells[4].textContent = vehicle.vehicleStatus;
+    row.cells[5].textContent = vehicle.vehicleAllocatedStaff;
+    row.cells[6].textContent = vehicle.vehicleRemark;
 }
 // // Add a row to the table
 function addRowToTable(vehicle, index) {
@@ -140,7 +142,7 @@ function renderTable() {
     vehicleList.forEach((vehicle, index) => addRowToTable(vehicle, index));
 }
 
-// // Handle table actions (edit & delete)
+// Handle table actions (edit & delete)
 tableBody.addEventListener("click", function (event) {
     const row = event.target.closest("tr");
     if (!row) return;
