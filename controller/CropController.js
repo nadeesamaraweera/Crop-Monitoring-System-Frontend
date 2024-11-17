@@ -151,7 +151,7 @@ function renderTable() {
     cropList.forEach((crop, index) => addRowToTable(crop, index));
 }
 
-// // Handle table actions (edit & delete)
+ // Handle table actions (edit & delete)
 tableBody.addEventListener("click", function (event) {
     const row = event.target.closest("tr");
     if (!row) return;

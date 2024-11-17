@@ -24,7 +24,7 @@
             <a href="#field-sec" id="field"><i class="fas fa-seedling icon"></i>Field Management</a>
             <a href="#crop-sec" id="crop"><i class="fas fa-leaf icon"></i>Crops Management</a>
             <a href="#staff-sec" id="staff"><i class="fas fa-users icon"></i>Staff Management</a>
-            <a href="#monitoring-log-sec" id="log"><i class="fas fa-clipboard-list icon"></i>Monitoring Log Service</a>
+            <a href="#log-sec" id="log"><i class="fas fa-clipboard-list icon"></i>Monitoring Log Service</a>
             <a href="#vehicle-sec" id="vehicle"><i class="fas fa-truck icon"></i>Vehicle Management</a>
             <a href="#equipment-sec" id="equipment"><i class="fas fa-tools icon"></i>Equipment Service</a>
             <!-- Logout Button -->
@@ -870,6 +870,192 @@
                 </div>
             </div>
         </section>
+        <section id="log-sec" style="display: none">
+            <div class="container mt-4">
+                <div class="col-xl-12 col-sm-12 col-12 mb-4">
+                    <div class="title-card">
+                        <div class="title-heading">
+                            <label class="title" style="font-size: 25px;font-weight: 700" >Logs Summary </label>
+                            <button type="button" class="new-button flex-grow-1" data-bs-toggle="modal" data-bs-target="#newLogModal"><i class="fas fa-plus plus-icon"></i>Add New</button>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- Search bar -->
+                    <div class="mb-3" style="margin-left: 145vh;"> <!-- Adjust the margin as needed -->
+                        <div class="input-group mb-3" style="width: 350px;">
+                            <input type="text" id="searchLog" class="form-control" placeholder="Search logs" aria-label="Search">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="table-responsive">
+                        <table class="table  custom-table no-footer" id="tbl-log">
+                            <thead>
+                            <tr>
+                                <th>Log Code</th>
+                                <th>Log Date</th>
+                                <th>Details</th>
+                                <th>Observed image</th>
+                                <th>Field</th>
+                                <th>Crop</th>
+                                <th>Staff</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- New Log Modal -->
+                <div class="modal fade" id="newLogModal" tabindex="-1" aria-labelledby="newLogModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content" style="background-color: #2b2b2b; color: white;">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="newLogModalLabel">Add New Log Details</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="filter: invert(1);"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="logForm">
+                                    <div class="row mb-3">
+                                        <!-- Log Date -->
+                                        <div class="mb-3">
+                                            <label for="logDate" class="form-label">Log Date</label>
+                                            <input type="date" class="form-control" id="logDate">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <!-- Log Details -->
+                                        <div class="mb-3">
+                                            <label for="logDetails" class="form-label">Log Details</label>
+                                            <textarea class="form-control" id="logDetails" rows="4"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <!-- Field Ids -->
+                                        <div class="col-md-6">
+                                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                                <label for="logFiledId" class="form-label">Fields</label>
+                                                <button type="button" class="btn btn-success" id="addLogFieldButton">Add Fields</button>
+                                            </div>
+                                            <div id="initialLogFiled" class="input-group">
+                                                <select id="logFiledId" class="form-control mt-2">
+                                                    <option value="">Select Field</option>
+                                                </select>
+                                            </div>
+                                            <div id="additionalLogField" class="mt-2"></div> <!-- Container for dynamic log inputs -->
+                                        </div>
+                                        <!-- Crops Ids -->
+                                        <div class="col-md-6">
+                                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                                <label for="logCropId" class="form-label">Crops</label>
+                                                <button type="button" class="btn btn-success" id="addLogCropButton">Add Crop</button>
+                                            </div>
+                                            <div id="initialLogCrop" class="input-group">
+                                                <select id="logCropId" class="form-control mt-2">
+                                                    <option value="">Select Crop</option>
+                                                </select>
+                                            </div>
+                                            <div id="additionalLogCrop" class="mt-2"></div> <!-- Container for dynamic log inputs -->
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <!-- Staff Ids -->
+                                        <div class="col-md-6">
+                                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                                <label for="logStaffId" class="form-label">Add Member</label>
+                                                <button type="button" class="btn btn-success" id="addLogStaffButton">Add Staff</button>
+                                            </div>
+                                            <div id="initialLogStaff" class="input-group">
+                                                <select id="logStaffId" class="form-control mt-2">
+                                                    <option value="">Select Crop</option>
+                                                </select>
+                                            </div>
+                                            <div id="additionalLogStaff" class="mt-2"></div> <!-- Container for dynamic log inputs -->
+                                        </div>
+                                        <!--Monitoring Log Image -->
+                                        <div class="col-md-6">
+                                            <label for="observedImage" class="form-label">Log Image</label>
+                                            <input type="file" class="form-control" id="observedImage" accept="image/*" onchange="previewImage('observedImage', 'previewLog')">
+                                            <img id="previewLog" src="#" alt="Image Preview" class="img-fluid mt-2 d-none" style="max-height: 150px;">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" id="addLogButton" class="btn btn-success" form="logForm">Add Log</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Update Log Modal -->
+                <div class="modal fade" id="updateLogModal" tabindex="-1" aria-labelledby="updateLogModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content" style="background-color: #2b2b2b; color: white;">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="updateLogModalLabel">Update Log Details</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="filter: invert(1);"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="updateLogForm">
+                                    <div class="mb-3">
+                                        <!-- Log Date -->
+                                        <label for="updateLogDate" class="form-label">Log Date</label>
+                                        <input type="date" class="form-control" id="updateLogDate">
+                                    </div>
+                                    <div class="row mb-3">
+                                        <!-- Log Details -->
+                                        <div class="mb-3">
+                                            <label for="updateDetails" class="form-label">Log Details</label>
+                                            <textarea class="form-control" id="updateDetails" rows="4">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <!-- Field Ids -->
+                                        <div class="col-md-6">
+                                            <div class="mb-3" id="updateLogFieldContainer">
+                                                <label class="form-label">Fields</label>
+                                                <div id="updateLogFieldId"></div> <!-- fields container for dynamic inputs -->
+                                            </div>
+                                        </div>
+                                        <!-- Crops Ids -->
+                                        <div class="col-md-6">
+                                            <div class="mb-3" id="updateLogCropContainer">
+                                                <label class="form-label">Crops</label>
+                                                <div id="updateLogCropId"></div> <!-- crops container for dynamic inputs -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <!-- Staff Ids -->
+                                        <div class="col-md-6">
+                                            <div class="col-md-6">
+                                                <div class="mb-3" id="updateLogStaffContainer">
+                                                    <label class="form-label">Staff</label>
+                                                    <div id="updateLogStaffId"></div> <!-- staff Id container for dynamic inputs -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Monitoring Log Image -->
+                                        <div class="col-md-6">
+                                            <label class="form-label">Image Preview</label>
+                                            <div>
+                                                <img id="updatePreviewLog" src="#" alt="Image  Preview" class="d-none" width="100">
+                                            </div>
+                                            <input type="file" class="form-control mt-2" id="updateLogImage">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-success" form="updateLogForm">Update Logs</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 </header>
 
@@ -879,6 +1065,7 @@
 <script type="module" src="controller/FieldController.js"></script>
 <script type="module" src="controller/CropController.js"></script>
 <script type="module" src="controller/StaffController.js"></script>
+<script type="module" src="controller/MonitoringLogController.js"></script>
 
 <script>
     function previewImage(inputId, previewId) {
