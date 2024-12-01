@@ -82,9 +82,9 @@
                         <div class="card p-4 shadow-sm">
                             <h5>Quick Links</h5>
                             <div class="d-grid gap-2 mt-3">
-                                <a href="#" class="btn btn-outline-success">Add New Crop</a>
-                                <a href="#" class="btn btn-outline-success">Add New Log</a>
-                                <a href="#" class="btn btn-outline-success">Add new Equipment</a>
+                                <a href="#"  class="btn btn-outline-success">Add New Crop</a>
+                                <a href="#"  class="btn btn-outline-success">Add New Log</a>
+                                <a href="#"  class="btn btn-outline-success">Add new Equipment</a>
                             </div>
                         </div>
                     </div>
@@ -146,16 +146,16 @@
                             <form id="fieldForm">
                                 <div class="mb-3">
                                     <!-- Field Name -->
-                                    <label for="fieldName" class="form-label">Field Name</label>
-                                    <input type="text" class="form-control" id="fieldName">
+                                    <label for="name" class="form-label">Field Name</label>
+                                    <input type="text" class="form-control" id="name">
                                 </div>
                                 <div class="row mb-3">
                                     <!-- Field Location -->
                                     <div class="col-md-6">
-                                        <label for="fieldLocation" class="form-label">Field Location (Coordinate)</label>
+                                        <label for="location" class="form-label">Field Location (Coordinate)</label>
                                         <div class="input-group">
-                                            <input type="text" class="form-control" id="fieldLocation" placeholder="Enter GPS coordinates (e.g., 40.7128,-74.0060)" required>
-                                            <button id="location" type="button" class="btn btn-secondary" onclick="selectLocation()">
+                                            <input type="text" class="form-control" id="location" placeholder="Enter GPS coordinates (e.g., 40.7128,-74.0060)" required>
+                                            <button id="GetLocation" type="button" class="btn btn-secondary" onclick="selectLocation()">
                                                 <i class="fas fa-map-marker-alt"></i>
                                             </button>
                                         </div>
@@ -237,7 +237,7 @@
                                 <!-- Location -->
                                 <div class="row mb-3">
                                     <div class="col-md-6">
-                                        <label for="fieldLocation" class="form-label">Field Location (Coordinate)</label>
+                                        <label for="location" class="form-label">Field Location (Coordinate)</label>
                                         <div class="input-group">
                                             <input type="text" class="form-control" id="updateFieldLocation" placeholder="Enter GPS coordinates (e.g., 40.7128,-74.0060)" required>
                                             <button id="updateLocation" type="button" class="btn btn-secondary" onclick="selectLocation()">
@@ -351,7 +351,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="filter: invert(1);"></button>
                         </div>
                         <div class="modal-body">
-                            <form id="cropForm">
+                            <form id="cropForm" style="display: none">
 
                                 <div class="row mb-3">
                                     <!-- Crop Name -->
@@ -915,7 +915,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="filter: invert(1);"></button>
                             </div>
                             <div class="modal-body">
-                                <form id="logForm">
+                                <form id="logForm" style="display: none">
                                     <div class="row mb-3">
                                         <!-- Log Date -->
                                         <div class="mb-3">
@@ -1273,7 +1273,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="filter: invert(1);"></button>
                             </div>
                             <div class="modal-body p-4">
-                                <form id="equipmentForm">
+                                <form id="equipmentForm" >
                                     <!--                                    Equipment ID-->
                                     <div class="row mb-3">
                                         <!-- Equipment Name-->
@@ -1390,7 +1390,6 @@
 </header>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-<script src="assets/lib/jquery-3.7.1.min.js"></script>
 <script type="module" src="controller/DashBoardController.js"></script>
 <script type="module" src="controller/FieldController.js"></script>
 <script type="module" src="controller/CropController.js"></script>
