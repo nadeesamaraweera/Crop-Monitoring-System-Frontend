@@ -1,0 +1,49 @@
+.title-section {
+    border-left: 5px solid #198754;
+}
+
+.title-section h2 {
+    font-size: 1.75rem;
+    color: #14532d;
+}
+
+.title-section p {
+    font-size: 1rem;
+}
+
+.title-section .btn {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+}
+
+.modal-header {
+    background-color: #198754;
+    color: white;
+}
+
+.modal-title {
+    font-size: 1.25rem;
+}
+
+.btn-close {
+    background-color: white;
+}
+
+.search-bar {
+    width: 300px;
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+.table thead {
+    background-color: #198754;
+    color: #ffffff;
+}
+
+.table th,
+.table td {
+    vertical-align: middle;
+    text-align: center;
+}

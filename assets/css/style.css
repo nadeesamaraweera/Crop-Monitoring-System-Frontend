@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+
+}
+#login-form span {
+    cursor: pointer;
+}
+
+#signup-form span {
+    cursor: pointer;
+}
+
+.image-side {
+    background-position: left;
+    min-height: 100vh;
+    position: relative;
+}
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 100px;
+    right: 0;
+    height: 50%;
+    z-index: 1;
+}
+.slideshow-images {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.slideshow-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+.slideshow-image.active {
+    opacity: 1;
+}
+.image-side .slideshow-image {
+    border-top-right-radius: 35px;
+    border-bottom-right-radius: 35px;
+}
+
+

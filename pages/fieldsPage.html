@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/css/fields.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <!-- Title -->
+    <div class="title-section p-4 mb-3 bg-white rounded shadow-sm">
+        <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between">
+            <div>
+                <h2 class="fw-bold mb-1">Field Management</h2>
+            </div>
+            <div class="mt-3 mt-md-0">
+                <button class="btn btn-success d-flex align-items-center" data-bs-toggle="modal"
+                    data-bs-target="#addFieldModal">
+                    <box-icon name='plus-circle' class="me-1" color='#ffffff'></box-icon>Add Field
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popup pane -->
+    <div class="modal fade" id="addFieldModal" tabindex="-1" aria-labelledby="addFieldModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold" id="addFieldModalLabel">Add New Field</h5>
+                    <button type="button" class="btn-close bg-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="addFieldForm">
+                        <div class="mb-3">
+                            <label for="fieldName" class="form-label">Field Name</label>
+                            <input type="text" class="form-control text-capitalize" id="fieldName" placeholder="Enter field name"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="fieldLocation" class="form-label">Field Location (GPS Coordinates)</label>
+                            <input type="text" class="form-control" id="fieldLocation"
+                                placeholder="Enter GPS coordinates" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="fieldSize" class="form-label">Field Size (in sq. meters)</label>
+                            <input type="number" class="form-control" id="fieldSize" placeholder="Enter field size"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="staffId" class="form-label">Staff Members</label>
+                            <select class="form-select staffId" id="staffId" required></select>
+                        </div>
+                        <div class="mt-3">
+                            <h6>Selected Fields:</h6>
+                            <ul id="selectedFieldsList"></ul>
+                        </div>
+                        <div class="mb-3">
+                            <label for="fieldImg1" class="form-label">Field Image 1</label>
+                            <input type="file" class="form-control" id="fieldImg1" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="fieldImg2" class="form-label">Field Image 2</label>
+                            <input type="file" class="form-control" id="fieldImg2" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" form="addFieldForm" class="btn btn-success" id="btnSave">Add New Field</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search-bar -->
+    <div class="d-flex justify-content-end">
+        <div class="d-flex search-bar">
+            <div class="w-100">
+                <div class="input-group">
+                    <button class="btn btn-outline-success fw-semibold text-start dropdown-toggle w-75 ms-4" type="button"
+                        id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                        Search Field By Id
+                    </button>
+                    <ul class="dropdown-menu w-25" id="fieldList" aria-labelledby="dropdownMenuButton"> </ul>
+                    <button class="btn btn-success" type="button" id="btnSearch">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Table -->
+    <div class="table-responsive mt-3">
+        <table class="table table-bordered table-hover table-striped align-middle">
+            <thead class="table-success">
+                <tr>
+                    <th>Field Id</th>
+                    <th>Field Name</th>
+                    <th>Location (GPS)</th>
+                    <th>Size (sq. meters)</th>
+                    <th>Staff Member</th>
+                    <th>Field Image 1</th>
+                    <th>Field Image 2</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody class="text-capitalize" id="fieldTable"></tbody>
+        </table>
+    </div>
+
+    <!-- Edit Field Modal -->
+    <div class="modal fade" id="editFieldModal" tabindex="-1" aria-labelledby="editFieldModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold" id="editFieldModalLabel">Edit Field</h5>
+                    <button type="button" class="btn-close bg-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="editFieldForm">
+                        <div class="mb-3">
+                            <label for="editFieldId" class="form-label">Field Id</label>
+                            <input type="text" class="form-control" id="editFieldId" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editFieldName" class="form-label">Field Name</label>
+                            <input type="text" class="form-control" id="editFieldName" placeholder="Enter field name"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editFieldLocation" class="form-label">Field Location (GPS Coordinates)</label>
+                            <input type="text" class="form-control" id="editFieldLocation"
+                                placeholder="Enter GPS coordinates" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editFieldSize" class="form-label">Field Size (in sq. meters)</label>
+                            <input type="number" class="form-control" id="editFieldSize" placeholder="Enter field size"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editStaffId" class="form-label">Staff Member</label>
+                            <select class="form-select staffId" id="editStaffId" required></select>
+                        </div>
+                        <div class="mt-3">
+                            <h6>Selected Fields:</h6>
+                            <ul id="updatedFieldsList"></ul>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editFieldImg1" class="form-label">Field Image 1</label>
+                            <input type="file" class="form-control" id="editFieldImg1" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editFieldImg2" class="form-label">Field Image 2</label>
+                            <input type="file" class="form-control" id="editFieldImg2" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" form="editFieldForm" class="btn btn-success" id="btnEdit">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="../controller/fieldsController.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</body>
+
+</html>

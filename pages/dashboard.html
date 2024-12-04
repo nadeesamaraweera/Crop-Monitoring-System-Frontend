@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="icon" href="../assets/images/login/green-shadow logo.jpg">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <section>
+        <nav class="navbar d-lg-none bg-body-tertiary fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand text-success fw-semibold fs-2" href="#">Green Shadow</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu"
+                    aria-controls="sidebarMenu" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </nav>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-2 d-none d-lg-block p-0 min-vh-100 bg-secondary-subtle sidebar">
+                    <div class=" d-flex flex-column p-3">
+                        <h3 class="text-center fw-semibold text-success">Green Shadow (Pvt) Ltd</h3>
+                        <div class="text-center">
+                            <img src="../assets/images/login/logo.png" alt="dashboard-logo" class="img-fluid"
+                                 style="max-width: 80%;">
+                        </div>
+                        <ul class="nav flex-column mb-auto w-100">
+                            <li class="nav-item mb-2 dash-btn">
+                                <a href="" class="btn btn-success fw-semibold fs-5 d-flex align-items-center">
+                                    <box-icon type='solid' color="#ffffff" name='dashboard' class="me-3"></box-icon>
+                                    Dashboard
+                                </a>
+                            </li>
+                            <li class="nav-item mb-2 dash-btn">
+                                <a href="../pages/fieldsPage.html" class="btn btn-success fw-semibold fs-5 d-flex align-items-center">
+                                    <box-icon type='solid' color="#ffffff" name='landscape' class="me-3"></box-icon>
+                                    Field
+                                </a>
+                            </li>
+                            <li class="nav-item mb-2 dash-btn">
+                                <a href="../pages/cropsPage.html" class="btn btn-success fw-semibold fs-5 d-flex align-items-center">
+                                    <box-icon type='solid' color="#ffffff" name='leaf' class="me-3"></box-icon> Crop
+                                </a>
+                            </li>
+                            <li class="nav-item mb-2 dash-btn">
+                                <a href="../pages/staffPage.html" class="btn btn-success fw-semibold fs-5 d-flex align-items-center">
+                                    <box-icon type='solid' color="#ffffff" name='user' class="me-3"></box-icon> Staff
+                                </a>
+                            </li>
+                            <li class="nav-item mb-2 dash-btn">
+                                <a href="../pages/logsPage.html" class="btn btn-success fw-semibold fs-5 d-flex align-items-center">
+                                    <box-icon type='solid' color="#ffffff" name='log-in-circle' class="me-3"></box-icon>
+                                    Logs
+                                </a>
+                            </li>
+                            <li class="nav-item mb-2 dash-btn">
+                                <a href="../pages/vehiclePage.html" class="btn btn-success fw-semibold fs-5 d-flex align-items-center">
+                                    <box-icon type='solid' color="#ffffff" name='car-mechanic' class="me-3"></box-icon>
+                                    Vehicle
+                                </a>
+                            </li>
+                            <li class="nav-item mb-2 dash-btn">
+                                <a href="../pages/equipmentPage.html" class="btn btn-success fw-semibold fs-5 d-flex align-items-center">
+                                    <box-icon type='solid' color="#ffffff" name='key' class="me-3"></box-icon>
+                                    Equipments
+                                </a>
+                            </li>
+                            <li class="nav-item mb-2 dash-btn">
+                                <a href="#" class="btn btn-success fw-semibold fs-5 d-flex align-items-center">
+                                    <box-icon type='solid' color="#ffffff" name='report' class="me-3"></box-icon>
+                                    Reports
+                                </a>
+                            </li>
+                            <li class="nav-item mb-2 dash-btn">
+                                <a class="btn-signout btn btn-success fw-semibold fs-5 d-flex align-items-center">
+                                    <box-icon type='solid' color="#ffffff" name='user-minus' class="me-3"></box-icon>
+                                    Sign Out
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="sidebarMenu"
+                    aria-labelledby="sidebarMenuLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="sidebarMenuLabel">Menu</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="nav flex-column mb-auto align-items-center">
+                            <li class="nav-item mb-3 w-75 dash-btn">
+                                <a href="" class="btn btn-success fw-semibold fs-5 d-flex align-items-center"
+                                    data-bs-dismiss="offcanvas">
+                                    <box-icon type='solid' color="#ffffff" name='dashboard' class="me-4"></box-icon>
+                                    Dashboard
+                                </a>
+                            </li>
+                            <li class="nav-item mb-3 w-75 dash-btn">
+                                <a href="../pages/fieldsPage.html" class="btn btn-success fw-semibold fs-5 d-flex align-items-center"
+                                    data-bs-dismiss="offcanvas">
+                                    <box-icon type='solid' color="#ffffff" name='landscape' class="me-4"></box-icon>
+                                    Field
+                                </a>
+                            </li>
+                            <li class="nav-item mb-3 w-75 dash-btn">
+                                <a href="../pages/cropsPage.html" class="btn btn-success fw-semibold fs-5 d-flex align-items-center"
+                                    data-bs-dismiss="offcanvas">
+                                    <box-icon type='solid' color="#ffffff" name='leaf' class="me-4"></box-icon> Crop
+                                </a>
+                            </li>
+                            <li class="nav-item mb-3 w-75 dash-btn">
+                                <a href="../pages/staffPage.html" class="btn btn-success fw-semibold fs-5 d-flex align-items-center"
+                                    data-bs-dismiss="offcanvas">
+                                    <box-icon type='solid' color="#ffffff" name='user' class="me-4"></box-icon> Staff
+                                </a>
+                            </li>
+                            <li class="nav-item mb-3 w-75 dash-btn">
+                                <a href="../pages/logsPage.html" class="btn btn-success fw-semibold fs-5 d-flex align-items-center"
+                                    data-bs-dismiss="offcanvas">
+                                    <box-icon type='solid' color="#ffffff" name='log-in-circle' class="me-4"></box-icon>
+                                    Log
+                                </a>
+                            </li>
+                            <li class="nav-item mb-3 w-75 dash-btn">
+                                <a href="../pages/vehiclePage.html" class="btn btn-success fw-semibold fs-5 d-flex align-items-center"
+                                    data-bs-dismiss="offcanvas">
+                                    <box-icon type='solid' color="#ffffff" name='car-mechanic' class="me-4"></box-icon>
+                                    Vehicle
+                                </a>
+                            </li>
+                            <li class="nav-item mb-3 w-75 dash-btn">
+                                <a href="../pages/equipmentPage.html" class="btn btn-success fw-semibold fs-5 d-flex align-items-center"
+                                    data-bs-dismiss="offcanvas">
+                                    <box-icon type='solid' color="#ffffff" name='key' class="me-4"></box-icon> Equipment
+                                </a>
+                            </li>
+                            <li class="nav-item mb-3 w-75 dash-btn">
+                                <a href="#" class="btn btn-success fw-semibold fs-5 d-flex align-items-center"
+                                    data-bs-dismiss="offcanvas">
+                                    <box-icon type='solid' color="#ffffff" name='report' class="me-4"></box-icon>
+                                    Reports
+                                </a>
+                            </li>
+                            <li class="nav-item mb-3 w-75 dash-btn">
+                                <a class="btn-signout btn btn-success fw-semibold fs-5 d-flex align-items-center"
+                                    data-bs-dismiss="offcanvas">
+                                    <box-icon type='solid' color="#ffffff" name='user-minus' class="me-4"></box-icon>
+                                    Sign Out
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-10 p-2" id="content-wrapper">
+                    <div class="d-lg-none mt-5"></div>
+                    <iframe class="w-100" id="mainContentFrame" src=""></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script type="module" src="../controller/dashboardController.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</body>
+
+</html>
