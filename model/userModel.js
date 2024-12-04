@@ -17,7 +17,7 @@ export function userSignIn(user) {
 
 export function userSignUp(user) {
   return $.ajax({
-    url: "http://localhost:8080/cms/api/v1/greenShadow/signup",
+    url: "http://localhost:8080/greenShadow/api/v1/greenShadow/signup",
     method: "POST",
     contentType: "application/json",
     data: JSON.stringify(user),

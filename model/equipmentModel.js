@@ -1,9 +1,9 @@
 const token = localStorage.getItem("authToken");
-const baseUrl = "http://localhost:8080/cms/api/v1/equipment";
+const baseUrl = "http://localhost:8080/greenShadow/api/v1/equipment";
 
 export function checkTokenValidity() {
   return $.ajax({
-    url: "http://localhost:8080/cms/api/v1/auth/validate-token",
+    url: "http://localhost:8080/greenShadow/api/v1/auth/validate-token",
     method: "POST",
     headers: {
       Authorization: "Bearer " + token,
@@ -149,7 +149,7 @@ export function deleteEquipment(equipmentId) {
 
 export function getAllStaff() {
   return $.ajax({
-    url: "http://localhost:8080/cms/api/v1/staff",
+    url: "http://localhost:8080/greenShadow/api/v1/staff",
     method: "GET",
     contentType: "application/json",
     headers: {
@@ -164,7 +164,7 @@ export function getAllStaff() {
 
 export function getAllFields() {
   return $.ajax({
-    url: "http://localhost:8080/cms/api/v1/field",
+    url: "http://localhost:8080/greenShadow/api/v1/field",
     method: "GET",
     contentType: "application/json",
     headers: {

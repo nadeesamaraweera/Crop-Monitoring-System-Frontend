@@ -1,9 +1,9 @@
 const token = localStorage.getItem("authToken");
-const baseUrl = "http://localhost:8080/cms/api/v1/vehicle";
+const baseUrl = "http://localhost:8080/greenShadow/api/v1/vehicle";
 
 export function checkTokenValidity() {
   return $.ajax({
-    url: "http://localhost:8080/cms/api/v1/auth/validate-token",
+    url: "http://localhost:8080/greenShadow/api/v1/auth/validate-token",
     method: "POST",
     headers: {
       Authorization: "Bearer " + token,
