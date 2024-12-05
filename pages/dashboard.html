@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="icon" href="../assets/img/logo2_resized_50.png">
+    <link rel="icon" href="">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/dashboard.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -30,7 +30,7 @@
                     <div class=" d-flex flex-column p-3">
                         <h3 class="text-center fw-semibold text-success">Green Shadow (Pvt) Ltd</h3>
                         <div class="text-center">
-                            <img src="../assets/img/logo2_resized_50.png" alt="dashboard-logo" class="img-fluid"
+                            <img src="assets/img/logo.png" alt="dashboard-logo" class="img-fluid"
                                  style="max-width:80%;">
                         </div>
                         <ul class="nav flex-column mb-auto w-100">
@@ -167,7 +167,64 @@
                     <iframe class="w-100" id="mainContentFrame" src=""></iframe>
                 </div>
             </div>
+                <div class="container">
+                    <div class="welcome-bar mb-4 d-flex justify-content-between align-items-center" style="background-color: #4CAF50; padding: 20px;">
+                        <div class="text-center flex-grow-1">
+                            <button class="btn btn-light d-md-none" id="toggleSidebar">☰</button>
+                            <h1>Welcome to Green Shadow (Pvt) Ltd</h1>
+                        </div>
+                        <div class="date-time-container text-end">
+                            <p id="currentDate"></p>
+                            <p id="currentTime"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- Total Vehicles Card -->
+                    <div class="col-md-5" style="margin-left: 150px">
+                        <div class="card text-center mb-4" style="width: 400px"  >
+                            <div class="card-body">
+                                <h5 class="card-title">Total Vehicles</h5>
+                                <p class="card-text" id="totalVehicles">0</p>
+                                <button class="btn btn-primary" onclick="loadTotalVehicles()">Refresh</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Total Crops Card -->
+                    <div class="col-md-5">
+                        <div class="card text-center mb-4" style="width: 400px">
+                            <div class="card-body">
+                                <h5 class="card-title">Total Crops</h5>
+                                <p class="card-text" id="totalCrops">0</p>
+                                <button class="btn btn-primary" onclick="loadTotalCrops()">Refresh</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-5" style="margin-left: 150px">
+                            <div class="card text-center mb-4" style="width: 400px">
+                                <div class="card-body">
+                                    <h5 class="card-title">Recent Activity</h5>
+                                    <ul class="list-unstyled mt-3">
+                                        <li><p class="card-text">Added new crop - Corn</p></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="card p-4 shadow-sm">
+                                <h5>Quick Links</h5>
+                                <div class="d-grid gap-2 mt-3">
+                                    <a href="#" class="btn btn-outline-success">Add New Crop</a>
+                                    <a href="#" class="btn btn-outline-success">Add New Log</a>
+                                    <a href="#" class="btn btn-outline-success">Add new Equipment</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
         </div>
+
     </section>
 
     <script type="module" src="../controller/dashboardController.js"></script>
@@ -179,6 +236,41 @@
         crossorigin="anonymous"></script>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    function loadTotalVehicles() {
+        const totalVehicles = 10; // Example value
+        document.getElementById('totalVehicles').innerText = totalVehicles;
+    }
+    function loadTotalCrops() {
+        const totalCrops = 25; // Example value
+        document.getElementById('totalCrops').innerText = totalCrops;
+    }
+    function updateDateTime() {
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed, so add 1
+        const day = String(now.getDate()).padStart(2, '0');
+        const formattedDate = `Date: ${year}.${month}.${day}`; // Custom format
+
+        const nows = new Date();
+        const options = { hour12: true, hour: 'numeric', minute: 'numeric', second: 'numeric' };
+        const formattedTime = `Time: ${nows.toLocaleTimeString(undefined, options).replace(/:/g, '.')}`;
+        console.log(formattedTime);
+        document.getElementById('currentDate').innerText = formattedDate;
+        document.getElementById('currentTime').innerText = formattedTime;
+    }
+    setInterval(updateDateTime, 1000);
+    window.onload = updateDateTime;
+    // Initial call to display immediately on page load
+    window.onload = updateDateTime;
+    // Initial function calls when the page loads
+    window.onload = function() {
+        loadTotalVehicles();
+        loadTotalCrops();
+        updateDateTime();
+        setInterval(updateDateTime, 1000);
+    }
+</script>
 </body>
 
 </html>
