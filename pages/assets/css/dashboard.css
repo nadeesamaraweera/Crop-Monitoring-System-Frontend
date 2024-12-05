@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+h3 {
+    font-family: "Poppins", sans-serif;
+}
+.welcome-bar {
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Space between items */
+    align-items: center; /* Center items vertically */
+    background-color: #4CAF50; /* Green background */
+    color: white; /* Text color */
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px; /* Adequate padding */
+}
+.welcome-bar h1 {
+    font-size: 2rem; /* Size of the heading */
+    text-align: center; /* Center the heading text */
+    margin: 0; /* Remove default margin */
+}
+.date-time-container {
+    text-align: right; /* Align date and time to the right */
+}
+#currentDate, #currentTime {
+    margin: 0; /* Remove default margin */
+    font-size: 1rem; /* Size for date and time */
+}
+
+.card{
+    border: 2px solid;
+    border: #028314;
+}
+.card-text {
+    font-size: 2rem; /* Large size for the count */
+    font-weight: bold; /* Bold text for emphasis */
+    color: #4CAF50; /* Green color for the text */
+    margin-bottom: 15px; /* Space below the count */
+    border:1px
+}
+.card h5{
+    color: #028314;
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+    .dash-btn{
+        width: 100%;
+    }
+}
+
+#mainContentFrame {
+    height: 90vh;
+}
+
+@media (max-width: 767px) {
+    #content-wrapper {
+        padding-top: 4rem;
+    }
+
+    #mainContentFrame {
+        height: 90vh;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    #mainContentFrame {
+        height: 90vh;
+    }
+}
+
+@media (min-width: 992px) {
+    #mainContentFrame {
+        height: 95vh;
+    }
+}
